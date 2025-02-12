@@ -4,6 +4,8 @@
 
 Maison de Ligue est une application web professionnelle conçue pour faciliter la gestion des employés d'une ligue. Elle offre une interface intuitive et conviviale permettant aux administrateurs de gérer efficacement les informations relatives aux employés, telles que leurs informations personnelles, leurs rôles, leurs contrats, etc.
 
+[Publication de la page](https://aristidesamba.github.io/maison-de-ligues/)
+
 ## Fonctionnalités
 
 *   **Gestion des employés **:
