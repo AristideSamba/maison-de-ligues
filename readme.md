@@ -1,5 +1,5 @@
 # Maison de Ligue
-
+![Logo de mon portfolio](/favicon/android-chrome-192x192.png)
 ## Présentation du projet
 
 Maison de Ligue est une application web professionnelle conçue pour faciliter la gestion des employés d'une ligue. Elle offre une interface intuitive et conviviale permettant aux administrateurs de gérer efficacement les informations relatives aux employés, telles que leurs informations personnelles, leurs rôles, leurs contrats, etc.

@@ -1,0 +1,79 @@
+@import url(./reset.css);
+
+main{
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+/*Section de l'image d'accueil*/
+.img_acceuil{
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../asset/Home.jpg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.img_acceuil h1{
+  position: absolute;
+  bottom: 5px;
+  font-size: 7rem;
+  font-weight: 700;
+  color: #ffff;
+}
+.img_acceuil p{
+  font-size: 5.5rem;
+  font-weight: 100;
+  color: #ffff;
+}
+
+/*Section form*/
+.section_form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 50px
+}
+.section_form p{
+  text-align: center;
+  font-weight: 300;
+  font-size: 2.4rem;
+}
+.section_form fieldset{
+  padding: 30px 70px;
+  border-radius: 10px;
+}
+.section_form input{
+  border: solid 1px #A09F9F;
+  border-radius: 10px;
+  width: 300px;
+  height: 40px;
+  text-align:unset;
+  font-size: 1.6rem;
+  padding: auto;
+}
+.section_form input:focus{
+  border-color: #0066FF;
+  outline: none;
+}
+.section_form button{
+  width: 305px;
+  height: 55px;
+  margin-top: 10px;
+  border-radius: 10px;
+  background-color: #0066FF;
+  color: #ffff;
+  border: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+  transition: .3s ease-in-out;
+  opacity: .8;
+}
+.section_form button:hover{
+  opacity: 1;
+  transition: .3s ease-in-out;
+}
