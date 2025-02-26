@@ -72,6 +72,7 @@ main{
   cursor: pointer;
   transition: .3s ease-in-out;
   opacity: .8;
+  outline-color:  #063f95;
 }
 .section_form button:hover{
   opacity: 1;
