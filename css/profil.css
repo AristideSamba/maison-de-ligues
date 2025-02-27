@@ -1,0 +1,40 @@
+@import url(./collaborateurs.css);
+
+.profil-form form{
+  display: flex;
+  justify-content: center;
+}
+.profil-form form fieldset{
+  border: none;
+  text-align: end;
+}
+.profil-form form fieldset input,
+.profil-form form fieldset select{
+  text-align: start;
+}
+.profil-form form input{
+  width: 200px;
+  height: 30px;
+  border: solid 1px #C9C8C8;
+  border-radius: 20px;
+  background-color: #F0F0F0;
+  text-align:unset;
+  font-size: 1.6rem;
+  padding: auto;
+  padding-left: 10px;
+  outline: none;
+  margin-bottom: 10px;
+}
+.profil-form form select{
+  width: 215px;
+  height: 35px;
+  border: solid 1px #C9C8C8;
+  border-radius: 20px;
+  background-color: #F0F0F0;
+  text-align:unset;
+  font-size: 1.6rem;
+  padding: auto;
+  padding-left: 10px;
+  outline: none;
+  margin-bottom: 10px;
+}

@@ -74,7 +74,8 @@ aside form{
 aside form fieldset{
   border: none;
 }
-aside form input{
+aside form select{
+  width: 200px;
   height: 30px;
   border: solid 1px #C9C8C8;
   border-radius: 20px;

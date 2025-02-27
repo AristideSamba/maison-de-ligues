@@ -31,11 +31,22 @@
       <form action="" method="post">
         <fieldset>
           <label for="nom">Rechercher par:</label><br>
-          <input type="name" id="nom" name="nom" placeholder="Nom"><br>
+          <select id="nom" name="nom">
+            <option value="nom">Nom</option>
+            <option value="prenom">Prénom</option>
+          </select><br>
           <label for="categorie">Catégorie</label><br>
-          <input type="text" id="categorie" name="categorie" placeholder="Technique"><br>
+          <select id="categorie" name="categorie">
+            <option value="informatique">Informatique</option>
+            <option value="ressourceshumaines">Ressources Humaines</option>
+          </select><br>
           <label for="ville">Localisation:</label><br>
-          <input type="text" id="ville" name="ville" placeholder="Lyon"><br>
+          <select id="ville" name="ville">
+            <option value="paris">Paris</option>
+            <option value="lyon">Lyon</option>
+            <option value="marseille">Marseille</option>
+            <option value="nante">Nantes</option>
+          </select><br>
         </fieldset>
       </form>
     </aside>
