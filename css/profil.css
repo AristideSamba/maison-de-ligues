@@ -4,6 +4,11 @@
   display: flex;
   justify-content: center;
 }
+.profil-form h2{
+  margin-left: 15rem;
+  font-size: 2.4rem;
+  font-weight: 300;
+}
 .profil-form form fieldset{
   border: none;
   text-align: end;
@@ -37,4 +42,23 @@
   padding-left: 10px;
   outline: none;
   margin-bottom: 10px;
+}
+
+.profil-form form button{
+  width: max-content;
+  padding: 1rem;
+  margin-top: 10px;
+  border-radius: 10px;
+  background-color: #0066FF;
+  color: #ffff;
+  border: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+  transition: .3s ease-in-out;
+  opacity: .8;
+  outline-color:  #063f95;
+}
+.profil-form form button:hover{
+  opacity: 1;
+  transition: .3s ease-in-out;
 }

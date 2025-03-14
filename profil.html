@@ -20,13 +20,15 @@
   </header>
   <main>
     <section class="section-search">
-      <h2>MODIFIER MON PROFIL</h2>
+      <h2>PROFIL</h2>
     </section>
     <section class="profil-form">
+      <h2>Modifiez votre profil</h2>
       <form action="" method="post">
         <fieldset>
-          <label for="nom">*Civilité:</label>
+          <label for="civilite">*Civilité:</label>
           <select id="civilite" name="civilite" required>
+            <option value="">Sélectionnez une civilité</option>
             <option value="mr">Mr</option>
             <option value="mme">Mme</option>
           </select><br>
@@ -35,10 +37,10 @@
             <option value="informatique">Informatique</option>
             <option value="ressourceshumaines">Ressources Humaines</option>
           </select><br>
-          <label for="nom">*Nom:</label>
-          <input type="name" name="name" id="name"><br>
+          <label for="name">*Nom:</label>
+          <input type="text" name="name" id="name"><br>
           <label for="prenom">*Prénom:</label>
-          <input type="name" name="prenom" id="prenom"><br>
+          <input type="text" name="prenom" id="prenom"><br>
           <label for="email">*Email:</label>
           <input type="email" id="email" name="email" placeholder="exemple@gmail.com" required><br>
           <label for="mot_de_passe">*Mot de passe:</label>
@@ -63,6 +65,7 @@
           </select><br>
           <label for="imageUrl">URL de la photo:</label>
           <input type="url" id="imageUrl" name="imageUrl" placeholder="https://www.exemple.com/image.jpg"><br>
+          <button type="submit">MODIFIER</button>
         </fieldset>
       </form>
     </section>
