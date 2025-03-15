@@ -1,8 +1,8 @@
 <?php
-  $titrePage = "Connexion";
-  $pageCss = "theme.css";
-  include_once "./controller/head.inc.php";
-
+$titrePage = "Connexion";
+$pageCss = "theme.css";
+include_once "./controller/head.inc.php";
+include_once "db_connexion.php";
 ?>
 
 <body>
@@ -24,7 +24,9 @@
           <input type="email" id="email" name="email" placeholder="exemple@gmail.com" required><br>
           <label for="mot_de_passe">Mot de passe *</label><br>
           <input type="password" id="mot_de_passe" name="mot_de_passe" required><br>
-          <button type="submit">CONNEXION</button>
+          <div class="button-container">
+            <button type="submit">CONNEXION</button>
+          </div>
         </fieldset>
       </form>
     </section>

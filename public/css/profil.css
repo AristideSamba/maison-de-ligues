@@ -43,7 +43,9 @@
   outline: none;
   margin-bottom: 10px;
 }
-
+.profil-form form .button-container{
+  text-align: center;
+}
 .profil-form form button{
   width: max-content;
   padding: 1rem;

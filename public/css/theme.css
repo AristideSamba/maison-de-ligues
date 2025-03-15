@@ -60,6 +60,9 @@ main{
   border-color: #0066FF;
   outline: none;
 }
+.section_form .button-container{
+  text-align: center;
+}
 .section_form button{
   width: max-content;
   padding: 1rem;
