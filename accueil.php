@@ -10,7 +10,7 @@
     <nav>
       <ul>
         <li><a href="collaborateurs.php"><img src="./asset/customer.png" alt=""> Collaborateurs</a></li>
-        <li class="img-employe"><a href="#"><img src="./asset/tamara-bellis-Brl7bqld05E-unsplash.jpg" alt=""></a></li>
+        <li class="img-employe"><a href="profil.php"><img src="./asset/tamara-bellis-Brl7bqld05E-unsplash.jpg" alt=""></a></li>
         <li><a href=""><img src="./asset/power-off.png" alt=""> Déconnexion</a></li>
       </ul>
     </nav>
