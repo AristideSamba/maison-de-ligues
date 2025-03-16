@@ -3,6 +3,7 @@ $titrePage = "Connexion";
 $pageCss = "theme.css";
 include_once "./controller/head.inc.php";
 include_once "db_connexion.php";
+
 ?>
 
 <body>
@@ -16,6 +17,8 @@ include_once "db_connexion.php";
         <li><a href="accueil.php">Accueil</a></li>
         <li><a href="collaborateurs.php">Collaborateur</a></li>
         <li><a href="profil.php">Profil</a></li>
+        <li><a href="ajoutCollaborateurs.php">Ajout collab</a></li>
+        <li><a href="editionCollaborateurs.php">Edition collab</a></li>
       </ul>
       <h2>Pour vous connecter à l'intranet, entrez <br>vos identifiants et mot de passe</h2>
       <form action="" method="post">

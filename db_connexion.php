@@ -21,6 +21,7 @@ try {
         if ($email === $root_mail && password_verify($password, $root_password_hash)) {
             session_start();
             $_SESSION["user"] = true;
+            $_SESSION["photo_profil"] = "./asset/default-profil.jpg"; // Image par défaut pour le super utilisateur
             header("Location: accueil.php");
             exit();
         } else {
@@ -33,6 +34,12 @@ try {
             if ($utilisateur && password_verify($password, $utilisateur['password'])) {
                 session_start();
                 $_SESSION["utilisateur_id"] = $utilisateur['id'];
+                // Vérifier si l'URL de la photo existe
+                if (!empty($utilisateur['url'])) {
+                    $_SESSION["photo_profil"] = $utilisateur['url'];
+                } else {
+                    $_SESSION["photo_profil"] = "./asset/default-profil.jpg"; // Image par défaut
+                }
                 header("Location: accueil.php");
                 exit();
             } else {
@@ -45,3 +52,4 @@ try {
 }
 
 $conn = null;
+?>

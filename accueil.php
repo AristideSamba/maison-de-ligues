@@ -1,7 +1,14 @@
 <?php 
+  //initialisation de la session
+  session_start();
   $titrePage = "Accueil";
   $pageCss = "accueil.css";
+
+  //inclusion du head
   include_once "./controller/head.inc.php";
+
+  //inclusion de la récupération de la photo de profil
+  include_once "./controller/photoProfil.inc.php";
 
 ?>
 <body>
@@ -10,7 +17,7 @@
     <nav>
       <ul>
         <li><a href="collaborateurs.php"><img src="./asset/customer.png" alt=""> Collaborateurs</a></li>
-        <li class="img-employe"><a href="profil.php"><img src="./asset/tamara-bellis-Brl7bqld05E-unsplash.jpg" alt=""></a></li>
+        <li class="img-employe"><a href="profil.php"><img src="<?php print $photo_profil_url; ?>" alt=""></a></li> <!--Ajout de la variable pour la photo de profil-->
         <li><a href=""><img src="./asset/power-off.png" alt=""> Déconnexion</a></li>
       </ul>
     </nav>
