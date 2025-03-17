@@ -4,6 +4,7 @@
   $titrePage = "Accueil";
   $pageCss = "accueil.css";
 
+
   //inclusion du head
   include_once "./controller/head.inc.php";
 
@@ -18,7 +19,7 @@
       <ul>
         <li><a href="collaborateurs.php"><img src="./asset/customer.png" alt=""> Collaborateurs</a></li>
         <li class="img-employe"><a href="profil.php"><img src="<?php print $photo_profil_url; ?>" alt=""></a></li> <!--Ajout de la variable pour la photo de profil-->
-        <li><a href=""><img src="./asset/power-off.png" alt=""> Déconnexion</a></li>
+        <li><a href="deconnexion.php"><img src="./asset/power-off.png" alt="Icone de deconnexion"> Déconnexion</a></li>
       </ul>
     </nav>
   </header>

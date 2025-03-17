@@ -1,7 +1,11 @@
 <?php
+session_start();
 $titrePage = "Profil";
 $pageCss = "profil.css";
 include_once "./controller/head.inc.php";
+
+//inclusion de la récupération de la photo de profil
+include_once "./controller/photoProfil.inc.php";
 
 ?>
 <body>
@@ -10,8 +14,8 @@ include_once "./controller/head.inc.php";
     <nav>
       <ul>
         <li><a href=""><img src="./asset/customer.png" alt=""> Collaborateurs</a></li>
-        <li class="img-employe"><a href="#"><img src="./asset/tamara-bellis-Brl7bqld05E-unsplash.jpg" alt=""></a></li>
-        <li><a href=""><img src="./asset/power-off.png" alt=""> Déconnexion</a></li>
+        <li class="img-employe"><a href="#"><img src="<?php print $photo_profil_url; ?>" alt="Photo de profil de l'utilisateur"></a></li>
+        <li><a href="deconnexion.php"><img src="./asset/power-off.png" alt="Icone de deconnexion"> Déconnexion</a></li>
       </ul>
     </nav>
   </header>

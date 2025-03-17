@@ -2,7 +2,7 @@
 $titrePage = "Connexion";
 $pageCss = "theme.css";
 include_once "./controller/head.inc.php";
-include_once "db_connexion.php";
+include_once "./model/db_connexion.php";
 
 ?>
 

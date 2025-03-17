@@ -1,4 +1,5 @@
 <?php
+  session_start();
   $titrePage = "Edition collaborateurs";
   $pageCss = "editionCollaborateurs.css";
 
@@ -12,8 +13,8 @@
       <ul>
         <li><a href="collaborateurs.php"><img src="./asset/customer.png" alt=""> Collaborateurs</a></li>
         <li><a href="ajoutCollaborateurs.php"><img src="./asset/customer.png" alt=""> Ajouter</a></li>
-        <li class="img-employe"><a href="#"><img src="./asset/tamara-bellis-Brl7bqld05E-unsplash.jpg" alt=""></a></li>
-        <li><a href=""><img src="./asset/power-off.png" alt=""> Déconnexion</a></li>
+        <li class="img-employe"><a href="#"><img src="<?php print $photo_profil_url; ?>" alt="Photo de profil de l'utilisateur"></a></li>
+        <li><a href="deconnexion.php"><img src="./asset/power-off.png" alt="Icone de deconnexion"> Déconnexion</a></li>
       </ul>
     </nav>
   </header>

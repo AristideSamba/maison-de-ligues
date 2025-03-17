@@ -12,7 +12,7 @@ include_once "./controller/head.inc.php";
       <ul>
         <li><a href=""><img src="./asset/customer.png" alt=""> Collaborateurs</a></li>
         <li class="img-employe"><a href="#"><img src="./asset/tamara-bellis-Brl7bqld05E-unsplash.jpg" alt=""></a></li>
-        <li><a href=""><img src="./asset/power-off.png" alt=""> Déconnexion</a></li>
+        <li><a href="deconnexion.php"><img src="./asset/power-off.png" alt="Icone de deconnexion"> Déconnexion</a></li>
       </ul>
     </nav>
   </header>
