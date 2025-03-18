@@ -11,6 +11,8 @@
   //inclusion de la récupération de la photo de profil
   include_once "./controller/photoProfil.inc.php";
 
+  include_once "./controller/randomUser.inc.php";
+
 ?>
 <body>
   <header>
@@ -32,14 +34,14 @@
       <div class="info-employee">
         <h3>Informatique</h3>
         <div class="image-profil">
-          <img src="./asset/tamara-bellis-Brl7bqld05E-unsplash.jpg" alt="">
+          <img src="<?php print $photo_profil_aleatoire; ?>" alt="">
         </div>
         <ul>
-          <li>Aristide SAMBA 30 ans</li>
-          <li>Lyon, France</li>
-          <li>sambaa@samba.com</li>
-          <li>+33 05 02 02 01 02</li>
-          <li>Anniversaire: 25 février</li>
+          <li><?php print $nom . " " . $age . " ans"; ?></li>
+          <li><?php print $ville; ?></li>
+          <li><?php print $email; ?></li>
+          <li><?php print $telephone; ?></li>
+          <li>Anniversaire: <?php print $anniversaire; ?></li>
         </ul>
       </div>
       <button>DIRE BONJOUR A QUELQU'UN D'AUTRE</button>
