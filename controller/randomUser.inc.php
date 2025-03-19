@@ -12,7 +12,7 @@ try {
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     // Récupérer un utilisateur aléatoire et formater l'anniversaire
-    $stmt = $conn->query("SELECT *, DATE_FORMAT(dateNaissance, '%d/%m') as anniversaire FROM compte_employe ORDER BY RAND() LIMIT 1");
+    $stmt = $conn->query("SELECT *, DATE_FORMAT(dateNaissance, '%d/%m') as anniversaire FROM compte_employe WHERE email != 'root@m2l.com' ORDER BY RAND() LIMIT 1");
     $utilisateur_aleatoire = $stmt->fetch();
 
     if ($utilisateur_aleatoire) {
