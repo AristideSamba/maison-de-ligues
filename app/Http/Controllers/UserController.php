@@ -84,4 +84,35 @@ class UserController extends Controller
 
         return view('collaborateurs', compact('collaborateurs'));
     }
+
+    //Fonction pour Modifier
+    public function edit(User $user){
+        return view('users.edit', compact('user'));
+    }
+
+    //Fonction pour la mise à jour du collaborateur
+    public function update(Request $request, User $user)
+    {
+        $request->validate([
+            'civilite' => 'required|string|max:10',
+            'name' => 'required|string|max:255',
+            'prenom' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users,email,' . $user->id,
+            'date_de_naissance' => 'required|date',
+            'ville' => 'nullable|string|max:100',
+            'pays' => 'required|string|max:100',
+            'photo' => 'nullable|url|max:255',
+            'service' => 'required|string|max:50',
+        ]);
+
+        $user->update($request->all());
+
+        return redirect()->route('Collaborateurs')->with('success', 'Collaborateur mis à jour avec succès.');
+    }
+
+    //Fonction pour supprimer un collaborateur
+    public function destroy(User $user){
+        $user->delete();
+        return redirect()->route('Collaborateurs')->with('success', 'Collaborateur supprimé avec succès.');
+    }
 }

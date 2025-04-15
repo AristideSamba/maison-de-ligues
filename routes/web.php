@@ -17,9 +17,15 @@ Route::middleware(['auth'])->group(function () {
         return view('home');
     })->name('Acceuil');
 
+    //Route pour afficher le formulaire d'édition
+    Route::get('/profil', [UserController::class, 'editProfil'])->name('profil.edit');
+    Route::put('/profil', [UserController::class, 'updateProfil'])->name('profil.update');
+
+    // Route pour afficher la page de profil (lecture)
     Route::get('/profil', function () {
         return view('profil');
     })->name('Profil');
+
 
     // Route pour afficher la liste des collaborateurs
     Route::get('/collaborateurs', [UserController::class, 'index'])->name('Collaborateurs');
@@ -31,6 +37,13 @@ Route::middleware(['auth'])->group(function () {
 
     //pour traiter les données du formulaire d'ajout des collaborateurs enregistrer le nouveau collaborateur dans la base de données.
     Route::post('/users', [UserController::class, 'store'])->name('users.store');
+
+    Route::get('/users/{user}/edit', [UserController::class, 'edit'])->name('users.edit');
+
+    //Route pour la mise à jour du collaborateur
+    Route::put('/users/{user]/', [UserController::class, 'update'])->name('users.update');
+    //Route pour supprimer un collaborateur
+    Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('users.destroy');
 
 });
 

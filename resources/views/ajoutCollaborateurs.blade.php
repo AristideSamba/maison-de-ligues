@@ -58,7 +58,7 @@
                         <option value="Ressources Humaines">Ressources humaines</option>
                         <option value="Marketing">Marketing</option>
                         <option value="Relations Clients">Relations clients</option>
-                        <option value="Finance">Finances</option>
+                        <option value="Finance">Finance</option>
                     </select><br>
                     <label for="photo">URL de la photo:</label>
                     <input type="url" id="photo" name="photo" placeholder="https://www.exemple.com/image.jpg"><br>

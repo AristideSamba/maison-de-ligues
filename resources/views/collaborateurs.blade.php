@@ -64,6 +64,14 @@
                                         <p>Date de naissance: {{ \Carbon\Carbon::parse($collaborateur->date_de_naissance)->format('d/m/Y') }}</p>
                                         <p>{{ $collaborateur->telephone }}</p>
                                     </div>
+                                    <div class="actions">
+                                        <a href="{{ route('Profil', $collaborateur->id) }}">Modifier</a>
+                                        <form action="{{ route('users.destroy', $collaborateur->id) }}" method="POST" style="display: inline;">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet utilisateur ?')">Supprimer</button>
+                                        </form>
+                                    </div>
                                 </div>
                             </li>
                         @endforeach
