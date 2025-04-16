@@ -15,7 +15,7 @@
         </section>
         <section class="profil-form">
             <h2>Ajouter un collaborateur</h2>
-            <form action="{{ route('users.store') }}" method="post">
+            <form action="{{ route('users.store') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <fieldset>
                     <label for="civilite">Civilité:</label>
@@ -61,7 +61,9 @@
                         <option value="Finance">Finance</option>
                     </select><br>
                     <label for="photo">URL de la photo:</label>
-                    <input type="url" id="photo" name="photo" placeholder="https://www.exemple.com/image.jpg"><br>
+                    <input type="file" id="photo" name="photo" placeholder="https://www.exemple.com/image.jpg"><br>
+                    <small>Formats acceptés: jpeg, png, gif. Taille maximale: [indiquez la taille]</small>
+                    @error('photo') <div class="error">{{ $message }}</div> @enderror
                     <button type="submit">AJOUTER</button>
                 </fieldset>
             </form>

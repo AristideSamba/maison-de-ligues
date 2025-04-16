@@ -20,7 +20,7 @@ class AdminUserSeeder extends Seeder
             'name' => 'root',
             'prenom' => 'admin',
             'email' => 'root@m2l.com',
-            'password' => Hash::make('root'),
+            'password' => Hash::make('root1234567'),
             'date_de_naissance' => now(),
             'ville' => 'Paris',
             'pays' => 'France',

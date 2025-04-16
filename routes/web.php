@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthManager;
@@ -25,7 +24,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/collaborateurs', [UserController::class, 'index'])->name('Collaborateurs');
 
     // Route pour afficher le formulaire de modification d'un collaborateur
-    Route::get('/collaborateurs/{user}/edit', [UserController::class, 'edit'])->name('collaborateurs.edit');
+    Route::get('/edit/{user}', [UserController::class, 'edit'])->name('collaborateurs.edit');
 
     // Route pour traiter les données du formulaire de modification et mettre à jour le collaborateur
     Route::put('/collaborateurs/{user}', [UserController::class, 'update'])->name('collaborateurs.update');

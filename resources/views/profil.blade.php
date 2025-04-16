@@ -15,7 +15,7 @@
             </section>
             <section class="profil-form">
                 <h2>Modifiez votre profil</h2>
-                <form action="{{ route('profil.update') }}" method="post">
+                <form action="{{ route('profil.update') }}" method="post" enctype="multipart/form-data">
                     @csrf
                     @method('PUT') {{-- Indique à Laravel qu'il s'agit d'une mise à jour --}}
                     <fieldset>
@@ -50,7 +50,9 @@
                             <option value="Belgique" {{ auth()->user()->pays === 'Belgique' ? 'selected' : '' }}>Belgique</option>
                         </select><br>
                         <label for="photo">URL de la photo:</label>
-                        <input type="url" id="photo" name="photo" placeholder="https://www.exemple.com/image.jpg"><br>
+                        <input type="file" id="photo" name="photo" placeholder="https://www.exemple.com/image.jpg"><br>
+                        <small>Formats acceptés: jpeg, png, gif. Taille maximale: [indiquez la taille]</small>
+                        @error('photo') <div class="error">{{ $message }}</div> @enderror
                         <label for="service">*Service:</label>
                         <select id="service" name="service" required>
                             <option value="Informatique" {{ auth()->user()->service === 'Informatique' ? 'selected' : '' }}>Informatique</option>

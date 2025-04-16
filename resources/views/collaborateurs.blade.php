@@ -51,9 +51,9 @@
                                 <div class="collaborateur-info">
                                     <div class="photo-profil">
                                         @if ($collaborateur->photo)
-                                            <img src="{{ asset($collaborateur->photo) }}" alt="Photo de {{ $collaborateur->name }}">
+                                            <img src="{{ asset('storage/' . $collaborateur->photo) }}" alt="Photo de {{ $collaborateur->name }}">
                                         @else
-                                            <img src="{{ asset('asset/default-profil.png') }}" alt="Photo de profil par défaut">
+                                            <img src="{{ asset('default-profil.png') }}" alt="Photo de profil par défaut">
                                         @endif
                                     </div>
                                     <div class="details">

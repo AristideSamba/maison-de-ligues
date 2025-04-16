@@ -9,7 +9,11 @@
                 @endif
                 <li class="img-employe">
                     <a href="{{ route('Profil') }}">
-                        <img src="{{ asset(Auth::user()->photo) }}" alt="Photo de profil">
+                        @if (Auth::user()->photo)
+                            <img src="{{ asset('storage/' . Auth::user()->photo) }}" alt="Photo de profil">
+                        @else
+                            <img src="{{ asset('asset/default-profil.png') }}" alt="Photo de profil par défaut">
+                        @endif
                     </a>
                 </li>
                 <form action="{{ route('logout') }}" method="POST">
