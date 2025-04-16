@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
@@ -34,7 +35,7 @@ class UserController extends Controller
             'name' => 'required|string|max:255',
             'prenom' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|confirmed',
+            'password' => 'required|confirmed|min:8',
             'telephone' => 'required|string|max:20',
             'date_de_naissance' => 'required|date',
             'ville' => 'nullable|string|max:100',
@@ -86,28 +87,47 @@ class UserController extends Controller
     }
 
     //Fonction pour Modifier
-    public function edit(User $user){
-        return view('users.edit', compact('user'));
+
+    public function edit(User $user): View
+    {
+        return view('collaborateurs.edit', compact('user'));
     }
 
+
     //Fonction pour la mise à jour du collaborateur
-    public function update(Request $request, User $user)
+    public function update(Request $request): RedirectResponse
     {
-        $request->validate([
+        $user = Auth::user(); // Récupérer l'utilisateur connecté
+
+        $rules = [
             'civilite' => 'required|string|max:10',
             'name' => 'required|string|max:255',
             'prenom' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users,email,' . $user->id,
-            'date_de_naissance' => 'required|date',
+            'email' => 'required|string|email|max:255|unique:users,email,' . $user->id, // Ignorer l'email de l'utilisateur actuel
+            'date_de_naissance' => 'required|date', // Assurez-vous que le nom correspond à votre formulaire
             'ville' => 'nullable|string|max:100',
             'pays' => 'required|string|max:100',
-            'photo' => 'nullable|url|max:255',
+            'photo' => 'nullable|url|max:255', // Assurez-vous que le nom correspond à votre formulaire
             'service' => 'required|string|max:50',
-        ]);
+        ];
 
-        $user->update($request->all());
+        // Ajouter les règles pour le mot de passe uniquement s'il est renseigné
+        if ($request->filled('password')) {
+            $rules['password'] = 'required|confirmed|min:8';
+        }
 
-        return redirect()->route('Collaborateurs')->with('success', 'Collaborateur mis à jour avec succès.');
+        $request->validate($rules);
+
+        $data = $request->except('password', 'password_confirmation'); // Exclusion le champ de confirmation
+
+        // Mettre à jour le mot de passe uniquement s'il est présent et valide
+        if ($request->filled('password')) {
+            $data['password'] = Hash::make($request->password);
+        }
+
+        $user->update($data);
+
+        return redirect()->route('Collaborateurs')->with('success', 'Votre profil a été mis à jour avec succès.'); // Rediriger vers la page de profil
     }
 
     //Fonction pour supprimer un collaborateur

@@ -17,18 +17,19 @@ Route::middleware(['auth'])->group(function () {
         return view('home');
     })->name('Acceuil');
 
-    //Route pour afficher le formulaire d'édition
-    Route::get('/profil', [UserController::class, 'editProfil'])->name('profil.edit');
-    Route::put('/profil', [UserController::class, 'updateProfil'])->name('profil.update');
-
-    // Route pour afficher la page de profil (lecture)
     Route::get('/profil', function () {
         return view('profil');
     })->name('Profil');
 
-
     // Route pour afficher la liste des collaborateurs
     Route::get('/collaborateurs', [UserController::class, 'index'])->name('Collaborateurs');
+
+    // Route pour afficher le formulaire de modification d'un collaborateur
+    Route::get('/collaborateurs/{user}/edit', [UserController::class, 'edit'])->name('collaborateurs.edit');
+
+    // Route pour traiter les données du formulaire de modification et mettre à jour le collaborateur
+    Route::put('/collaborateurs/{user}', [UserController::class, 'update'])->name('collaborateurs.update');
+    Route::put('/profil', [UserController::class, 'update'])->name('profil.update');
 
     //Route pour le formulaire de recherche
     Route::get('/collaborateurs/search', [UserController::class, 'search'])->name('collaborateurs.search');
@@ -38,13 +39,8 @@ Route::middleware(['auth'])->group(function () {
     //pour traiter les données du formulaire d'ajout des collaborateurs enregistrer le nouveau collaborateur dans la base de données.
     Route::post('/users', [UserController::class, 'store'])->name('users.store');
 
-    Route::get('/users/{user}/edit', [UserController::class, 'edit'])->name('users.edit');
-
-    //Route pour la mise à jour du collaborateur
-    Route::put('/users/{user]/', [UserController::class, 'update'])->name('users.update');
     //Route pour supprimer un collaborateur
     Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('users.destroy');
-
 });
 
 Route::post('/logout', [AuthManager::class, 'logout'])->name('logout');

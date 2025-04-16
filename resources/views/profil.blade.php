@@ -15,7 +15,7 @@
             </section>
             <section class="profil-form">
                 <h2>Modifiez votre profil</h2>
-                <form action="{{ route('users.update') }}" method="post">
+                <form action="{{ route('profil.update') }}" method="post">
                     @csrf
                     @method('PUT') {{-- Indique à Laravel qu'il s'agit d'une mise à jour --}}
                     <fieldset>
@@ -31,12 +31,12 @@
                         <input type="text" name="prenom" id="prenom" value="{{ auth()->user()->prenom }}" ><br>
                         <label for="email">*Email:</label>
                         <input type="email" id="email" name="email" placeholder="exemple@gmail.com" value="{{ auth()->user()->email }}" required><br>
-                        <label for="mot_de_passe">*Mot de passe:</label>
-                        <input type="password" id="mot_de_passe" name="mot_de_passe" required><br>
-                        <label for="confirm_mot_de_passe">Confirmation:</label>
-                        <input type="password" id="confirm_mot_de_passe" name="confirm_mot_de_passe" required><br>
-                        <label for="dateNaissance">*Date de naissance :</label>
-                        <input type="date" id="dateNaissance" name="dateNaissance" value="{{ auth()->user()->date_de_naissance }}" required><br>
+                        <label for="password">*Mot de passe:</label>
+                        <input type="password" id="password" name="password" required><br>
+                        <label for="password_confirmation">*Confirmation:</label>
+                        <input type="password" id="password_confirmation" name="password_confirmation" required><br>
+                        <label for="date_de_naissance">*Date de naissance :</label>
+                        <input type="date" id="date_de_naissance" name="date_de_naissance" value="{{ auth()->user()->date_de_naissance }}" required><br>
                         <label for="ville">Ville:</label>
                         <select id="ville" name="ville">
                             <option value="Paris" {{ auth()->user()->ville === 'Paris' ? 'selected' : '' }}>Paris</option>
@@ -49,6 +49,8 @@
                             <option value="France" {{ auth()->user()->pays === 'France' ? 'selected' : '' }}>France</option>
                             <option value="Belgique" {{ auth()->user()->pays === 'Belgique' ? 'selected' : '' }}>Belgique</option>
                         </select><br>
+                        <label for="photo">URL de la photo:</label>
+                        <input type="url" id="photo" name="photo" placeholder="https://www.exemple.com/image.jpg"><br>
                         <label for="service">*Service:</label>
                         <select id="service" name="service" required>
                             <option value="Informatique" {{ auth()->user()->service === 'Informatique' ? 'selected' : '' }}>Informatique</option>
@@ -57,9 +59,8 @@
                             <option value="Relations Clients" {{ auth()->user()->service === 'Relations Clients' ? 'selected' : '' }}>Relations clients</option>
                             <option value="Finance" {{ auth()->user()->service === 'Finance' ? 'selected' : '' }}>Finance</option>
                         </select><br>
-                        <label for="imageUrl">URL de la photo:</label>
-                        <input type="url" id="imageUrl" name="imageUrl"  placeholder="https://www.exemple.com/image.jpg"><br>
                         <button type="submit">MODIFIER</button>
+                        <a href="{{ route('Acceuil') }}">Annuler</a>
                     </fieldset>
                 </form>
             </section>
