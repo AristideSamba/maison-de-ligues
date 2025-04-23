@@ -4,9 +4,9 @@
         <ul>
             <li><a href="{{ route('Collaborateurs') }}"><img src="{{ asset('asset/customer.png') }}" alt=""> Collaborateurs</a></li>
             @auth
-                @if(Auth::user()->est_admin)
+                @can('isAdmin', Auth::user())
                     <li><a href="{{ route('Ajout Collaborateurs') }}">AJOUTER</a></li>
-                @endif
+                @endcan
                 <li class="img-employe">
                     <a href="{{ route('Profil') }}">
                         @if (Auth::user()->photo)

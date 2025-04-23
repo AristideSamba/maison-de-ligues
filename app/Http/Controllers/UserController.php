@@ -102,58 +102,71 @@ class UserController extends Controller
 
     public function edit(User $user): View
     {
-        return view('collaborateurs.edit', compact('user'));
+        return view('edit', compact('user'));
     }
 
 
     //Fonction pour la mise à jour du collaborateur
-    public function update(Request $request): RedirectResponse
+    public function update(Request $request, User $user = null): RedirectResponse
     {
-        $user = Auth::user(); // Récupérer l'utilisateur connecté
+        // Si aucun utilisateur n'est passé (modification de son propre profil)
+        if (!$user || $user->id === Auth::id()) {
+            $user = Auth::user();
+            $redirectRoute = 'Collaborateurs'; // Route de retour pour l'utilisateur connecté
+            $successMessage = "Votre profil a été mis à jour avec succès.";
+        } else {
+            // Vérifie si l'utilisateur connecté a le droit de modifier un autre utilisateur
+            // (optionnel mais recommandé : à sécuriser via middleware ou policy aussi)
+            //if (!Auth::user()->isAdmin()) {
+                //abort(403, 'Accès non autorisé');
+           // }
+
+            $redirectRoute = 'Collaborateurs'; // Adapte selon ta vue de gestion admin
+            $successMessage = "Le profil de l'utilisateur a été mis à jour avec succès.";
+        }
 
         $rules = [
             'civilite' => 'required|string|max:10',
             'name' => 'required|string|max:255',
             'prenom' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users,email,' . $user->id, // Ignorer l'email de l'utilisateur actuel
-            'date_de_naissance' => 'required|date', // Assurez-vous que le nom correspond à votre formulaire
+            'email' => 'required|string|email|max:255|unique:users,email,' . $user->id,
+            'date_de_naissance' => 'required|date',
             'ville' => 'nullable|string|max:100',
             'pays' => 'required|string|max:100',
-            'photo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // Assurez-vous que le nom correspond à votre formulaire
+            'photo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'service' => 'required|string|max:50',
         ];
 
-        // Ajouter les règles pour le mot de passe uniquement s'il est renseigné
         if ($request->filled('password')) {
             $rules['password'] = 'required|confirmed|min:8';
         }
 
         $request->validate($rules);
 
-        $data = $request->except('password', 'password_confirmation', 'photo'); // Exclusion le champ de confirmation
+        $data = $request->except('password', 'password_confirmation', 'photo');
 
-        // Gestion de l'upload de la nouvelle photo
+        // Gestion de l'upload photo
         if ($request->hasFile('photo')) {
             $photo = $request->file('photo');
             $filename = time() . '_' . $photo->getClientOriginalName();
-            $path = $photo->storeAs('avatars', $filename); // Stockage dans storage/app/public/avatars
+            $path = $photo->storeAs('avatars', $filename);
 
-            // Supprimer l'ancienne photo si elle existe et n'est pas la photo par défaut
             if ($user->photo && !str_contains($user->photo, 'default-profil.png')) {
-                Storage::delete($user->photo); // Supprime le fichier du système de fichiers
+                Storage::delete($user->photo);
             }
 
-            $data['photo'] = $path; // Stocker le chemin relatif dans la base de données (storage/app/public/avatars/...)
+            $data['photo'] = $path;
         }
-        // Mettre à jour le mot de passe uniquement s'il est présent et valide
+
         if ($request->filled('password')) {
             $data['password'] = Hash::make($request->password);
         }
 
         $user->update($data);
 
-        return redirect()->route('Collaborateurs')->with('success', 'Votre profil a été mis à jour avec succès.'); // Rediriger vers la page de profil
+        return redirect()->route($redirectRoute)->with('success', $successMessage);
     }
+
 
     //Fonction pour supprimer un collaborateur
     public function destroy(User $user){

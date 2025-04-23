@@ -49,7 +49,7 @@
                             <option value="France" {{ auth()->user()->pays === 'France' ? 'selected' : '' }}>France</option>
                             <option value="Belgique" {{ auth()->user()->pays === 'Belgique' ? 'selected' : '' }}>Belgique</option>
                         </select><br>
-                        <label for="photo">URL de la photo:</label>
+                        <label for="photo">Photo:</label>
                         <input type="file" id="photo" name="photo" placeholder="https://www.exemple.com/image.jpg"><br>
                         <small>Formats acceptés: jpeg, png, gif. Taille maximale: [indiquez la taille]</small>
                         @error('photo') <div class="error">{{ $message }}</div> @enderror

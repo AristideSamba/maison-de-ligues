@@ -26,12 +26,12 @@
                             <option value="nom">Nom</option>
                             <option value="prenom">Prénom</option>
                         </select><br>
-                        <label for="categorie">Catégorie</label><br>
+                        <label for="categorie">Service</label><br>
                         <select id="categorie" name="categorie">
                             <option value="informatique">Informatique</option>
                             <option value="ressourceshumaines">Ressources Humaines</option>
                         </select><br>
-                        <label for="ville">Localisation:</label><br>
+                        <label for="ville">Ville:</label><br>
                         <select id="ville" name="ville">
                             <option value="paris">Paris</option>
                             <option value="lyon">Lyon</option>
@@ -64,14 +64,16 @@
                                         <p>Date de naissance: {{ \Carbon\Carbon::parse($collaborateur->date_de_naissance)->format('d/m/Y') }}</p>
                                         <p>{{ $collaborateur->telephone }}</p>
                                     </div>
-                                    <div class="actions">
-                                        <a href="">Modifier</a>
-                                        <form action="{{ route('users.destroy', $collaborateur->id) }}" method="POST" style="display: inline;">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet utilisateur ?')">Supprimer</button>
-                                        </form>
-                                    </div>
+                                    @can('manage', $collaborateur)
+                                        <div class="actions">
+                                            <a href="{{ route('collaborateurs.edit', $collaborateur->id) }}">Modifier</a>
+                                            <form action="{{ route('users.destroy', $collaborateur->id) }}" method="POST" style="display: inline;">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet utilisateur ?')">Supprimer</button>
+                                            </form>
+                                        </div>
+                                    @endcan
                                 </div>
                             </li>
                         @endforeach
