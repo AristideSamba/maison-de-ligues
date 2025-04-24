@@ -1,5 +1,5 @@
 <header>
-    <h1>M2L</h1>
+    <h1><a href="{{ route('Acceuil') }}">M2L</a></h1>
     <nav>
         <ul>
             <li><a href="{{ route('Collaborateurs') }}"><img src="{{ asset('asset/customer.png') }}" alt=""> Collaborateurs</a></li>

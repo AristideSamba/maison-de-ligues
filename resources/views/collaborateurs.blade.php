@@ -10,37 +10,50 @@
     @include('include.header')
     <body>
         <main>
-            <section class="section-search">
-                <h2>LISTE DES COLLABORATEURS</h2>
-                <form class="search-bar" action="{{ route('collaborateurs.search') }}" method="get">
-                    <input type="text" name="search" placeholder="RECHERCHER">
-                    <button type="submit" title="RECHERCHER"><img src="{{ asset('asset/search.png') }}" alt="Icone search" class="search-icon"></button>
-                </form>
-            </section>
-            <aside>
-                <h3><img src="{{ asset('asset/filter.png') }}" alt="">FILTRER</h3>
-                <form action="" method="post">
+            <form class="full-search-form" action="{{ route('collaborateurs.search') }}" method="get">
+                <section class="section-search">
+                    <h2>LISTE DES COLLABORATEURS</h2>
+                    <div class="search-bar">
+                        <input type="text" name="search" placeholder="RECHERCHER" value="{{ request('search') }}">
+                        <button type="submit" title="RECHERCHER">
+                            <img src="{{ asset('asset/search.png') }}" alt="Icone search" class="search-icon">
+                        </button>
+                    </div>
+                </section>
+
+                <aside>
+                    <h3><img src="{{ asset('asset/filter.png') }}" alt="">FILTRER</h3>
                     <fieldset>
-                        <label for="nom">Rechercher par:</label><br>
-                        <select id="nom" name="nom">
-                            <option value="nom">Nom</option>
-                            <option value="prenom">Prénom</option>
+                        <label for="filtre_nom">Rechercher par:</label><br>
+                        <select id="filtre_nom" name="filtre_nom">
+                            <option value="">Choisir</option>
+                            <option value="nom" {{ request('filtre_nom') == 'nom' ? 'selected' : '' }}>Nom</option>
+                            <option value="prenom" {{ request('filtre_nom') == 'prenom' ? 'selected' : '' }}>Prénom</option>
                         </select><br>
-                        <label for="categorie">Service</label><br>
-                        <select id="categorie" name="categorie">
-                            <option value="informatique">Informatique</option>
-                            <option value="ressourceshumaines">Ressources Humaines</option>
+
+                        <label for="service">Service</label><br>
+                        <select id="service" name="service">
+                            <option value="">Choisir</option>
+                            <option value="Informatique" {{ request('service') == 'Informatique' ? 'selected' : '' }}>Informatique</option>
+                            <option value="Ressources Humaines" {{ request('service') == 'Ressources Humaines' ? 'selected' : '' }}>Ressources Humaines</option>
+                            <option value="Marketing" {{ request('service') == 'Marketing' ? 'selected' : '' }}>Marketing</option>
+                            <option value="Relations Clients" {{ request('service') == 'Relations Clients' ? 'selected' : '' }}>Relations Clients</option>
+                            <option value="Finance" {{ request('service') == 'Finance' ? 'selected' : '' }}>Finance</option>
                         </select><br>
+
                         <label for="ville">Ville:</label><br>
                         <select id="ville" name="ville">
-                            <option value="paris">Paris</option>
-                            <option value="lyon">Lyon</option>
-                            <option value="marseille">Marseille</option>
-                            <option value="nante">Nantes</option>
+                            <option value="">Choisir</option>
+                            <option value="Paris" {{ request('ville') == 'Paris' ? 'selected' : '' }}>Paris</option>
+                            <option value="Lyon" {{ request('ville') == 'Lyon' ? 'selected' : '' }}>Lyon</option>
+                            <option value="Marseille" {{ request('ville') == 'Marseille' ? 'selected' : '' }}>Marseille</option>
+                            <option value="Nante" {{ request('ville') == 'Nante' ? 'selected' : '' }}>Nantes</option>
                         </select><br>
+
+                        <button type="submit">Filtrer</button>
                     </fieldset>
-                </form>
-            </aside>
+                </aside>
+            </form>
             <section class="collaborateurs-list">
                 @if ($collaborateurs->isEmpty())
                     <p> ❌️ Aucun collaborateur trouvé.</p>

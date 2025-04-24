@@ -69,13 +69,13 @@ aside h3 img{
   width: 30px;
   padding-right: 10px;
 }
-aside form{
+aside{
   margin-top: 20px;
 }
-aside form fieldset{
+aside fieldset{
   border: none;
 }
-aside form select{
+aside select{
   width: 200px;
   height: 30px;
   border: solid 1px #C9C8C8;
@@ -125,4 +125,44 @@ aside form select{
     font-weight: 200;
     border-radius: 10px;
     padding: 5px;
+}
+
+.full-search-form aside button,
+.actions button{
+    width: 10rem;
+   padding: 5px;
+    cursor: pointer;
+    border-radius: 10px;
+    border: solid 1px #C9C8C8;
+    font-size: 1.6rem;
+    transition: .4s ease-in-out;
+}
+.full-search-form aside button:hover,
+.actions button:hover{
+    border-radius: 10px;
+    background-color: #0066FF;
+    color: #ffff;
+    border: #ffff solid 1px;
+    transition: .4s ease-in-out;
+}
+.actions{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.actions a{
+    text-align: center;
+    background-color: #F0F0F0;
+    border: solid 1px #C9C8C8;
+    padding: 5px;
+    border-radius: 10px;
+    font-size: 1.6rem;
+    transition: .4s ease-in-out;
+}
+.actions a:hover{
+    border-radius: 10px;
+    background-color: #0066FF;
+    color: #ffff;
+    border: #ffff solid 1px;
+    transition: .4s ease-in-out;
 }

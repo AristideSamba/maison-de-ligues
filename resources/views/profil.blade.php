@@ -51,8 +51,8 @@
                         </select><br>
                         <label for="photo">Photo:</label>
                         <input type="file" id="photo" name="photo" placeholder="https://www.exemple.com/image.jpg"><br>
-                        <small>Formats acceptés: jpeg, png, gif. Taille maximale: [indiquez la taille]</small>
-                        @error('photo') <div class="error">{{ $message }}</div> @enderror
+                        <small>Formats acceptés: jpeg, png, gif. Taille maximale: 2Mb</small><br>
+                        @error('photo') <div class="error">{{ $message }}</div><br> @enderror
                         <label for="service">*Service:</label>
                         <select id="service" name="service" required>
                             <option value="Informatique" {{ auth()->user()->service === 'Informatique' ? 'selected' : '' }}>Informatique</option>

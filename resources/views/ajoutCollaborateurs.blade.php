@@ -62,8 +62,8 @@
                     </select><br>
                     <label for="photo">URL de la photo:</label>
                     <input type="file" id="photo" name="photo" placeholder="https://www.exemple.com/image.jpg"><br>
-                    <small>Formats acceptés: jpeg, png, gif. Taille maximale: [indiquez la taille]</small>
-                    @error('photo') <div class="error">{{ $message }}</div> @enderror
+                    <small>Formats acceptés: jpeg, png, gif. Taille maximale: 2Mb</small><br>
+                    @error('photo') <div class="error">{{ $message }}</div><br> @enderror
                     <button type="submit">AJOUTER</button>
                 </fieldset>
             </form>

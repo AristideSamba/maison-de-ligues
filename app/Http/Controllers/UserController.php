@@ -88,12 +88,35 @@ class UserController extends Controller
     public function search(Request $request)
     {
         $searchTerm = $request->input('search');
+        $filtreNom = $request->input('filtre_nom');
+        $service = $request->input('service');
+        $ville = $request->input('ville');
 
-        $collaborateurs = User::query()
-            ->where('name', 'like', "%{$searchTerm}%")
-            ->orWhere('prenom', 'like', "%{$searchTerm}%")
-            ->orWhere('email', 'like', "%{$searchTerm}%")
-            ->get(); // Ou paginate()
+        $query = User::query();
+
+        if ($searchTerm) {
+            $query->where(function($q) use ($searchTerm) {
+                $q->where('name', 'like', "%{$searchTerm}%")
+                    ->orWhere('prenom', 'like', "%{$searchTerm}%")
+                    ->orWhere('email', 'like', "%{$searchTerm}%");
+            });
+        }
+
+        if ($filtreNom === 'nom') {
+            $query->orderBy('name');
+        } elseif ($filtreNom === 'prenom') {
+            $query->orderBy('prenom');
+        }
+
+        if ($service) {
+            $query->where('service', $service);
+        }
+
+        if ($ville) {
+            $query->where('ville', $ville);
+        }
+
+        $collaborateurs = $query->get();
 
         return view('collaborateurs', compact('collaborateurs'));
     }
