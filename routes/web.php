@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthManager;
@@ -12,10 +13,9 @@ Route::get('/login', [AuthManager::class, 'login'])->name('Connexion');
 Route::post('/login', [AuthManager::class, 'loginPost'])->name('Connexion.post');
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/home', function () {
-        return view('home');
-    })->name('Acceuil');
-
+    Route::get('/home', [HomeController::class, 'index'])->name('Acceuil');
+    // Route pour récupérer un employé aléatoire
+    Route::get('/random-employee', [HomeController::class, 'getRandomEmployee'])->name('random.employee');
     Route::get('/profil', function () {
         return view('profil');
     })->name('Profil');
