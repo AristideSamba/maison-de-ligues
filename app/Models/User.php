@@ -53,4 +53,10 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    // Fichier `app/Models/User.php`
+    public function authLogs()
+    {
+        return $this->hasMany(AuthLog::class);
+    }
 }
